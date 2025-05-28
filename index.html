@@ -7,7 +7,11 @@
     <style>
         body {
             font-family: 'Georgia', 'Times New Roman', serif;
-            background: #f8f8f8;
+            background-color: #f8f8f8; /* Fallback background color */
+            background-image: url('Background.png'); /* Path to your background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -15,15 +19,26 @@
             min-height: 100vh;
             padding: 20px;
             color: #1a1a1a;
+            margin: 0; /* Reset default body margin */
+        }
+        .logo-container {
+            margin-bottom: 30px; /* Space below the logo */
+        }
+        .logo {
+            width: 150px; /* Adjust size as needed */
+            height: auto;
+            border-radius: 8px; /* Optional: add some rounded corners to the logo */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Optional: subtle shadow for the logo */
         }
         .container {
             width: 100%;
             max-width: 700px;
             background: white;
             padding: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Slightly darker shadow for better contrast */
             text-align: center;
             border-top: 3px solid #c9a961;
+            border-radius: 8px; /* Optional: add some rounded corners to the container */
         }
         h1 {
             font-size: 2.5em;
@@ -51,9 +66,10 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            border-radius: 5px; /* Optional: rounded corners for job items */
         }
         .job-item:hover {
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Slightly stronger hover shadow */
             transform: translateY(-3px);
         }
         .job-item h2 {
@@ -77,6 +93,7 @@
             font-size: 0.9em;
             letter-spacing: 0.8px;
             transition: background 0.3s ease, transform 0.2s ease;
+            border-radius: 5px; /* Optional: rounded corners for links */
         }
         .job-link:hover {
             background: #c9a961;
@@ -110,6 +127,9 @@
     </style>
 </head>
 <body>
+    <div class="logo-container">
+        <img src="logo.png" alt="D'Avila Reis Advogados Logo" class="logo">
+    </div>
     <div class="container">
         <h1>Vagas Abertas</h1>
         <p>Explore as oportunidades de carreira no Escritório D'Avila Reis Advogados e construa seu futuro conosco.</p>
