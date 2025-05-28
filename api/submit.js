@@ -2,23 +2,26 @@
 import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
-    // --- ADD THIS DEBUGGING LINE HERE ---
+    // --- DEBUGGING LINES (Optional, can be removed after verification) ---
     console.log('DEBUG: SMTP_HOST:', process.env.SMTP_HOST);
     console.log('DEBUG: SMTP_PORT:', process.env.SMTP_PORT);
     console.log('DEBUG: SMTP_USER:', process.env.SMTP_USER);
     console.log('DEBUG: SMTP_SECURE:', process.env.SMTP_SECURE);
-    // ------------------------------------
+    // -------------------------------------------------------------------
 
     if (req.method !== 'POST') {
         return res.status(405).json({ message: 'Method Not Allowed' });
     }
 
-    const { fullName, email, major, tenure, university, essay, resume, fileName, fileType } = req.body;
+    // Destructure the data, including jobTitle
+    const { jobTitle, fullName, email, major, tenure, university, essay, resume, fileName, fileType } = req.body;
 
-    if (!fullName || !email || !major || !tenure || !university || !essay) {
-        return res.status(400).json({ message: 'Todos os campos obrigatórios devem ser preenchidos.' });
+    // Basic server-side validation
+    if (!jobTitle || !fullName || !email || !essay) {
+        return res.status(400).json({ message: 'Todos os campos obrigatórios (Título da Vaga, Nome, E-mail, Resposta) devem ser preenchidos.' });
     }
 
+    // Configure Nodemailer transporter using environment variables
     const transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
         port: parseInt(process.env.SMTP_PORT || '587', 10),
@@ -31,15 +34,16 @@ export default async function handler(req, res) {
 
     const mailOptions = {
         from: process.env.SMTP_USER,
-        to: 'talktorobson@gmail.com',
-        subject: `Nova Candidatura de Estágio: ${fullName}`,
+        to: 'talktorobson@gmail.com', // Recipient email address as requested
+        subject: `Nova Candidatura (${jobTitle}): ${fullName}`, // Dynamic subject based on jobTitle
         html: `
+            <p><strong>Vaga Aplicada:</strong> ${jobTitle}</p>
             <p><strong>Nome Completo:</strong> ${fullName}</p>
             <p><strong>E-mail:</strong> ${email}</p>
-            <p><strong>Curso:</strong> ${major}</p>
-            <p><strong>Semestres Cursados:</strong> ${tenure}</p>
-            <p><strong>Universidade:</strong> ${university}</p>
-            <p><strong>Por que a advocacia empresarial moderna é seu futuro?</strong></p>
+            ${major ? `<p><strong>Curso:</strong> ${major}</p>` : ''}
+            ${tenure ? `<p><strong>Semestres Cursados:</strong> ${tenure}</p>` : ''}
+            ${university ? `<p><strong>Universidade:</strong> ${university}</p>` : ''}
+            <p><strong>Resposta Dissertativa:</strong></p>
             <p>${essay.replace(/\n/g, '<br>')}</p>
         `,
         attachments: []
