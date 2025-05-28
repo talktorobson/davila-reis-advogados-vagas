@@ -256,47 +256,100 @@
             transform: translateY(-2px);
         }
         
-        /* Call to action section styling */
-        .cta-section {
+        /* Form specific styles */
+        .application-form-section {
+            margin-top: 40px; /* Add some space above the form */
+        }
+
+        .application-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Space between form groups */
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #1a1a1a;
+            font-size: 0.95em;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="number"],
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #c9a961;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(201, 169, 97, 0.2);
+        }
+
+        .application-form h4 {
+            color: #1a1a1a;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            font-weight: 600;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        #submitButton {
             background: #c9a961;
             color: #1a1a1a;
-            padding: 50px;
-            text-align: center;
-            margin: 40px -40px -50px -40px; /* Negative margin to extend full width */
-        }
-        
-        /* CTA section heading */
-        .cta-section h3 {
-            font-size: 1.8em;
-            margin-bottom: 30px;
-            font-weight: 300;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        
-        /* Email info box styling */
-        .email-info {
-            background: rgba(255,255,255,0.9);
-            padding: 30px;
-            max-width: 500px;
-            margin: 0 auto 20px;
-            border: 2px solid #1a1a1a;
-        }
-        
-        /* Email info paragraph text */
-        .email-info p {
-            margin: 10px 0;
-            font-size: 1em;
-            color: #1a1a1a;
-        }
-        
-        /* Highlighted text styling */
-        .highlight {
-            background: #1a1a1a;
-            color: white;
-            padding: 4px 12px;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
             font-weight: bold;
-            display: inline-block;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            align-self: center; /* Center the button */
+            width: auto; /* Allow button to size based on content */
+            min-width: 200px;
+        }
+
+        #submitButton:hover {
+            background: #f4e4c1;
+            transform: translateY(-2px);
+        }
+
+        .message {
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .loading-message {
+            background: #e0f7fa;
+            color: #00796b;
+        }
+
+        .success-message {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .error-message {
+            background: #ffebee;
+            color: #c62828;
         }
         
         /* Footer section styling */
@@ -372,9 +425,15 @@
             .header { padding: 30px 20px; }
             .content { padding: 30px 20px; }
             .expertise-section { margin: -20px -20px 30px -20px; padding: 30px 20px; }
-            .cta-section { margin: 30px -20px -30px -20px; padding: 30px 20px; }
+            .application-form-section { margin: 30px -20px -30px -20px; padding: 30px 20px; }
             .info-grid { gap: 20px; }
             .company-stats { gap: 30px; }
+            .application-form-section {
+                padding: 20px; /* Adjust padding for smaller screens */
+            }
+            #submitButton {
+                width: 100%; /* Full width button on small screens */
+            }
         }
     </style>
 </head>
@@ -463,25 +522,49 @@
                     <span class="benefit-tag">Certificação Qualificada</span>
                 </div>
             </div>
-        </div>
-        
-        <div class="cta-section">
-            <h3>Como se Candidatar</h3>
-            <div class="email-info">
-                <p><strong>E-mail:</strong> vagas@davilareisadvogados.com.br</p>
-                <p><strong>Assunto:</strong> ESTÁGIO DIREITO - [Seu Nome]</p>
-                <p><strong>Documentos:</strong> CV + Carta de Apresentação</p>
-                <p style="margin-top: 15px; font-style: italic; font-size: 0.9em;">
-                    📝 Carta de apresentação (máx. 1 página) respondendo:<br>
-                    <strong>"Por que a advocacia empresarial moderna é seu futuro?"</strong>
-                </p>
-                <p style="margin-top: 20px;">
-                    <span class="highlight">Prazo: 15 de Junho de 2025</span>
-                </p>
+
+            <div class="section-box application-form-section">
+                <h3>Formulário de Candidatura</h3>
+                <form id="applicationForm" class="application-form">
+                    <div class="form-group">
+                        <label for="fullName">Nome Completo:</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <h4>Informações Acadêmicas:</h4>
+                    <div class="form-group">
+                        <label for="major">Curso:</label>
+                        <input type="text" id="major" name="major" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tenure">Semestres Cursados:</label>
+                        <input type="number" id="tenure" name="tenure" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="university">Universidade:</label>
+                        <input type="text" id="university" name="university" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="essay">Por que a advocacia empresarial moderna é seu futuro? (Resposta obrigatória)</label>
+                        <textarea id="essay" name="essay" rows="8" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="resume">Anexar Currículo (PDF, Imagem, DOC - Opcional, máx. 5MB):</label>
+                        <input type="file" id="resume" name="resume" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx">
+                    </div>
+
+                    <button type="submit" id="submitButton">Enviar Candidatura</button>
+                    
+                    <div id="loadingMessage" class="message loading-message" style="display: none;">Enviando candidatura...</div>
+                    <div id="responseMessage" class="message response-message" style="display: none;"></div>
+                </form>
             </div>
-            <p style="font-style: italic; margin-top: 20px;">
-                💡 Demonstre criatividade e pensamento inovador em sua candidatura
-            </p>
         </div>
         
         <div class="footer">
@@ -506,5 +589,123 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('applicationForm');
+            const submitButton = document.getElementById('submitButton');
+            const loadingMessage = document.getElementById('loadingMessage');
+            const responseMessage = document.getElementById('responseMessage');
+
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault(); // Prevent default form submission
+
+                responseMessage.style.display = 'none'; // Hide previous messages
+                loadingMessage.style.display = 'block'; // Show loading message
+                submitButton.disabled = true; // Disable button during submission
+
+                const formData = new FormData(form);
+                const data = {};
+                for (let [key, value] of formData.entries()) {
+                    data[key] = value;
+                }
+
+                const resumeFile = document.getElementById('resume').files[0];
+                let resumeBase64 = null;
+                let fileName = null;
+                let fileType = null;
+
+                // Handle file upload
+                if (resumeFile) {
+                    const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+                    const ALLOWED_FILE_TYPES = [
+                        'application/pdf',
+                        'image/jpeg',
+                        'image/png',
+                        'application/msword', // .doc
+                        'application/vnd.openxmlformats-officedocument.wordprocessingml.document' // .docx
+                    ];
+
+                    if (resumeFile.size > MAX_FILE_SIZE) {
+                        displayMessage('O arquivo é muito grande. O tamanho máximo permitido é 5MB.', 'error');
+                        resetFormState();
+                        return;
+                    }
+
+                    if (!ALLOWED_FILE_TYPES.includes(resumeFile.type)) {
+                        displayMessage('Formato de arquivo não suportado. Por favor, envie PDF, JPG, PNG ou DOC.', 'error');
+                        resetFormState();
+                        return;
+                    }
+
+                    try {
+                        resumeBase64 = await readFileAsBase64(resumeFile);
+                        fileName = resumeFile.name;
+                        fileType = resumeFile.type;
+                    } catch (error) {
+                        console.error('Error reading file:', error);
+                        displayMessage('Erro ao ler o arquivo. Por favor, tente novamente.', 'error');
+                        resetFormState();
+                        return;
+                    }
+                }
+
+                const payload = {
+                    fullName: data.fullName,
+                    email: data.email,
+                    major: data.major,
+                    tenure: data.tenure,
+                    university: data.university,
+                    essay: data.essay,
+                    resume: resumeBase64,
+                    fileName: fileName,
+                    fileType: fileType
+                };
+
+                try {
+                    const response = await fetch('/api/submit', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (response.ok) {
+                        displayMessage('Sua candidatura foi enviada com sucesso! Agradecemos o seu interesse e entraremos em contato em breve.<br><br>Enquanto isso, conheça mais sobre o D\'Avila Reis Advogados: <a href="http://www.davilareisadvogados.com.br" class="website" style="color: inherit; text-decoration: underline;">www.davilareisadvogados.com.br</a>', 'success');
+                        form.reset(); // Clear the form
+                    } else {
+                        const errorData = await response.json();
+                        displayMessage(`Ocorreu um erro ao enviar sua candidatura: ${errorData.message || 'Erro desconhecido'}`, 'error');
+                    }
+                } catch (error) {
+                    console.error('Fetch error:', error);
+                    displayMessage('Ocorreu um erro de rede. Por favor, verifique sua conexão e tente novamente.', 'error');
+                } finally {
+                    resetFormState();
+                }
+            });
+
+            function readFileAsBase64(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = () => resolve(reader.result.split(',')[1]); // Get only the base64 part
+                    reader.onerror = error => reject(error);
+                    reader.readAsDataURL(file);
+                });
+            }
+
+            function displayMessage(message, type) {
+                responseMessage.innerHTML = message;
+                responseMessage.className = `message ${type}-message`; // Set class for styling
+                responseMessage.style.display = 'block';
+            }
+
+            function resetFormState() {
+                loadingMessage.style.display = 'none';
+                submitButton.disabled = false;
+            }
+        });
+    </script>
 </body>
 </html>
