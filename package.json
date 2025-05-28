@@ -1,6 +1,14 @@
 {
+  "name": "davila-reis-landing-page",
+  "version": "1.0.0",
   "private": true,
+  "description": "Landing page for D'Avila Reis Advogados internship application with form",
+  "main": "api/submit.js",
+  "scripts": {
+    "start": "vercel dev"
+  },
   "dependencies": {
-    "@vercel/edge": "^0.1.2"
+    "@vercel/edge": "^0.1.2",
+    "nodemailer": "^6.9.13"
   }
 }
