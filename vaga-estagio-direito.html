@@ -14,12 +14,17 @@
         
         body {
             font-family: 'Georgia', 'Times New Roman', serif;
-            background: #f8f8f8;
+            background-color: #f8f8f8; /* Fallback background color */
+            background-image: url('Background.webp'); /* Path to your background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             padding: 20px;
+            margin: 0; /* Reset default body margin */
         }
         
         /* Main container for the landing page content */
@@ -30,6 +35,7 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             position: relative;
+            border-radius: 8px; /* Optional: add some rounded corners */
         }
         
         /* Header section styling */
@@ -525,7 +531,8 @@
 
             <div class="section-box application-form-section">
                 <h3>Formulário de Candidatura</h3>
-                <form input type="hidden" id="jobTitle" name="jobTitle" value="Estágio em Direito" class="application-form">
+                <form id="applicationForm" class="application-form">
+                    <input type="hidden" id="jobTitle" name="jobTitle" value="Estágio em Direito">
                     <div class="form-group">
                         <label for="fullName">Nome Completo:</label>
                         <input type="text" id="fullName" name="fullName" required>
