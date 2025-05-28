@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaga de Assistente Administrativo - D'Avila Reis Advogados</title>
+    <style>
+        /* Global styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: #f8f8f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        /* Main container for the landing page content */
+        .canvas {
+            width: 100%;
+            max-width: 800px;
+            background: white;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        /* Header section styling */
+        .header {
+            background: #1a1a1a;
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Decorative line at the top of the header */
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #c9a961 0%, #f4e4c1 50%, #c9a961 100%);
+        }
+        
+        /* Logo container for animation */
+        .logo-container {
+            margin-bottom: 30px;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        /* Logo SVG styling */
+        .logo {
+            width: 180px;
+            height: auto;
+            margin: 0 auto;
+        }
+        
+        /* Fade-in animation for the logo */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Badge styling (e.g., "Vaga Aberta") */
+        .badge {
+            display: inline-block;
+            background: #c9a961;
+            color: #1a1a1a;
+            padding: 6px 20px;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        
+        /* Main heading styling */
+        h1 {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        /* Subtitle styling */
+        .subtitle {
+            font-size: 1.1em;
+            color: #c9a961;
+            font-style: italic;
+        }
+        
+        /* Content section styling */
+        .content {
+            padding: 50px 40px;
+        }
+        
+        /* Info grid layout */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        /* Info card styling */
+        .info-card {
+            background: #fafafa;
+            padding: 30px;
+            border-top: 3px solid #c9a961;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        /* Info card hover effect */
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+        
+        /* Info card heading */
+        .info-card h3 {
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+        
+        /* Info card paragraph text */
+        .info-card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+        
+        /* Expertise section styling (repurposed for duties) */
+        .duties-section {
+            background: #1a1a1a;
+            color: white;
+            padding: 40px;
+            margin: -40px -40px 40px -40px; /* Negative margin to extend full width */
+            text-align: center;
+        }
+        
+        .duties-section h3 {
+            color: #c9a961;
+            margin-bottom: 25px;
+            font-size: 1.4em;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .duties-list {
+            list-style: none;
+            text-align: left;
+            margin: 0 auto;
+            max-width: 600px; /* Adjust as needed */
+            color: white;
+        }
+
+        .duties-list li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            border-bottom: 1px solid #333;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .duties-list li:last-child {
+            border-bottom: none;
+        }
+
+        .duties-list li::before {
+            content: '✓'; /* Custom checkmark bullet */
+            position: absolute;
+            left: 0;
+            color: #f4e4c1;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-right: 10px;
+        }
+
+        /* General section box styling */
+        .section-box {
+            border: 1px solid #e0e0e0;
+            padding: 35px;
+            margin-bottom: 30px;
+            background: #fafafa;
+        }
+        
+        /* Section box heading */
+        .section-box h3 {
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-bottom: 2px solid #c9a961;
+            padding-bottom: 10px;
+        }
+        
+        /* Requirements list styling */
+        .requirements ul {
+            list-style: none;
+        }
+        
+        /* Requirements list item styling */
+        .requirements li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #333;
+            border-bottom: 1px solid #eee;
+        }
+        
+        /* Remove bottom border for the last requirement item */
+        .requirements li:last-child {
+            border-bottom: none;
+        }
+        
+        /* Custom bullet point for requirements list */
+        .requirements li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #c9a961;
+            font-size: 1.2em;
+        }
+        
+        /* Benefit tag styling */
+        .benefit-tag {
+            display: inline-block;
+            background: #1a1a1a;
+            color: white;
+            padding: 8px 20px;
+            margin: 5px;
+            font-size: 0.85em;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+        
+        /* Benefit tag hover effect */
+        .benefit-tag:hover {
+            background: #c9a961;
+            color: #1a1a1a;
+            transform: translateY(-2px);
+        }
+        
+        /* Form specific styles */
+        .application-form-section {
+            margin-top: 40px; /* Add some space above the form */
+        }
+
+        .application-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Space between form groups */
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #1a1a1a;
+            font-size: 0.95em;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="number"],
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #c9a961;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(201, 169, 97, 0.2);
+        }
+
+        .application-form h4 {
+            color: #1a1a1a;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            font-weight: 600;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        #submitButton {
+            background: #c9a961;
+            color: #1a1a1a;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            align-self: center; /* Center the button */
+            width: auto; /* Allow button to size based on content */
+            min-width: 200px;
+        }
+
+        #submitButton:hover {
+            background: #f4e4c1;
+            transform: translateY(-2px);
+        }
+
+        .message {
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .loading-message {
+            background: #e0f7fa;
+            color: #00796b;
+        }
+
+        .success-message {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .error-message {
+            background: #ffebee;
+            color: #c62828;
+        }
+        
+        /* Footer section styling */
+        .footer {
+            background: #0a0a0a;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        /* Company stats layout */
+        .company-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        /* Individual stat styling */
+        .stat {
+            text-align: center;
+        }
+        
+        /* Stat number styling */
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: 300;
+            color: #c9a961;
+            margin-bottom: 5px;
+        }
+        
+        /* Stat label styling */
+        .stat-label {
+            font-size: 0.9em;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Footer quote section */
+        .footer-quote {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+        }
+        
+        /* Footer quote paragraph */
+        .footer-quote p {
+            font-style: italic;
+            color: #c9a961;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+        
+        /* Website link styling */
+        .website {
+            color: #c9a961;
+            text-decoration: none;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        
+        /* Website link hover effect */
+        .website:hover {
+            color: white;
+        }
+        
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8em; }
+            .header { padding: 30px 20px; }
+            .content { padding: 30px 20px; }
+            .duties-section { margin: -20px -20px 30px -20px; padding: 30px 20px; }
+            .application-form-section { margin: 30px -20px -30px -20px; padding: 30px 20px; }
+            .info-grid { gap: 20px; }
+            .company-stats { gap: 30px; }
+            .application-form-section {
+                padding: 20px; /* Adjust padding for smaller screens */
+            }
+            #submitButton {
+                width: 100%; /* Full width button on small screens */
+            }
+            .duties-list {
+                padding: 0 10px; /* Adjust padding for duties list */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="canvas">
+        <div class="header">
+            <div class="logo-container">
+                <svg class="logo" viewBox="0 0 280 140" xmlns="http://www.w3.org/2000/svg" style="width: 180px; height: auto;">
+                    <g transform="translate(140, 20)">
+                        <path d="M0 0 L-40 45 L40 45 Z" fill="none" stroke="white" stroke-width="2"/>
+                        <path d="M-40 45 Q0 55 40 45 L40 45 Q0 50 -40 45" fill="white"/>
+                        
+                        <g transform="translate(0, 22)">
+                            <path d="M-12 -10 Q-12 -10 -10 -10 Q0 -10 0 0 Q0 10 -10 10 Q-12 10 -12 10 M-10 -10 Q-8 -8 -8 0 Q-8 8 -10 10" 
+                                    fill="none" stroke="#c9a961" stroke-width="1.3" stroke-linecap="round"/>
+                            <path d="M5 10 L5 -10 M5 -10 Q12 -10 12 -5 Q12 0 5 0 Q10 0 13 10" 
+                                    fill="none" stroke="#c9a961" stroke-width="1.3" stroke-linecap="round"/>
+                        </g>
+                    </g>
+                    
+                    <text x="140" y="95" text-anchor="middle" font-family="Georgia, serif" font-size="24" font-weight="400" fill="white">D'avila Reis</text>
+                    
+                    <g transform="translate(140, 110)">
+                        <line x1="-55" y1="0" x2="-25" y2="0" stroke="#c9a961" stroke-width="0.8"/>
+                        <text x="0" y="5" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" letter-spacing="3" fill="#c9a961">ADVOGADOS</text>
+                        <line x1="25" y1="0" x2="55" y2="0" stroke="#c9a961" stroke-width="0.8"/>
+                    </g>
+                </svg>
+            </div>
+            <div class="badge">Vaga Aberta</div>
+            <h1>Assistente Administrativo</h1>
+            <p class="subtitle">Cerquilho/SP • 8 horas/dia • Presencial</p>
+        </div>
+        
+        <div class="content">
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Sobre Nós</h3>
+                    <p>A D'Avila Reis Advogados é um escritório boutique com 18 anos de excelência no mercado jurídico empresarial. Com mais de 2.500 casos de sucesso, somos reconhecidos pela combinação única entre tradição jurídica e inovação tecnológica. Buscamos jovens AMBICIOSOS e DEDICADOS que queiram se desenvolver e voar alto na carreira.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Inovação Contínua</h3>
+                    <p>Nosso ambiente 100% digital utiliza inteligência artificial, automação e as mais modernas ferramentas de gestão em nuvem. Você contribuirá com ideias para melhorar processos e implementar novas tecnologias.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="duties-section">
+            <h3>O Que Você Fará</h3>
+            <ul class="duties-list">
+                <li>Controle Financeiro: Apoiar no controle de pagamentos, recebimentos e relatórios e gestão de prestadores de serviço.</li>
+                <li>Suporte à implantação de processos: gerenciar o planejamento de implantação de processos, documentos e relatório junto aos clientes usando ferramentas digitais avançadas.</li>
+                <li>Suporte a clientes: Ser ponto de contato com clientes empresariais de alto nível.</li>
+                <li>Gestão de Documentos: Receber e organizar processos e documentos dos clientes e parceiros utilizando sistemas 100% na nuvem.</li>
+                <li>Apoio Estratégico: Auxiliar diretamente a equipe jurídica em tarefas administrativas essenciais.</li>
+                <li>Inovação Contínua: Contribuir com ideias para melhorar processos e implementar novas tecnologias.</li>
+            </ul>
+        </div>
+        
+        <div class="content">
+            <div class="section-box requirements">
+                <h3>O Que Buscamos</h3>
+                <ul>
+                    <li>Ensino Médio completo</li>
+                    <li>Disponibilidade para trabalho presencial de 8h/dia (segunda a sexta)</li>
+                    <li>PROFICIÊNCIA em Google Workspace (Gmail, Drive, Docs, Sheets, Calendar, Meet)</li>
+                    <li>EXCELENTE comunicação verbal e escrita - você será a voz do escritório</li>
+                    <li>ORGANIZAÇÃO e DISCIPLINA excepcionais - fundamentais para gerenciar múltiplas demandas</li>
+                    <li>AMBIÇÃO PROFISSIONAL - buscamos alguém que queira crescer e se desenvolver conosco</li>
+                    <li>Residir em Cerquilho/SP ou região</li>
+                </ul>
+            </div>
+            
+            <div class="section-box">
+                <h3>O Que Oferecemos</h3>
+                <div style="text-align: center;">
+                    <span class="benefit-tag">Salário Compatível</span>
+                    <span class="benefit-tag">Benefícios Atrativos</span>
+                    <span class="benefit-tag">Ambiente Moderno e Tecnológico</span>
+                    <span class="benefit-tag">Treinamentos em IA e Ferramentas Digitais</span>
+                    <span class="benefit-tag">Mentoria com Seniores</span>
+                    <span class="benefit-tag">Horário Flexível</span>
+                    <span class="benefit-tag">Equipe Colaborativa</span>
+                    <span class="benefit-tag">Participação em Projetos Estratégicos</span>
+                    <span class="benefit-tag">Plano de Carreira Transparente</span>
+                </div>
+            </div>
+
+            <div class="section-box application-form-section">
+                <h3>Formulário de Candidatura</h3>
+                <form id="applicationForm" class="application-form">
+                    <input type="hidden" id="jobTitle" name="jobTitle" value="Assistente Administrativo">
+
+                    <div class="form-group">
+                        <label for="fullName">Nome Completo:</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <h4>Informações Acadêmicas (Opcional para esta vaga):</h4>
+                    <div class="form-group">
+                        <label for="major">Curso:</label>
+                        <input type="text" id="major" name="major">
+                    </div>
+                    <div class="form-group">
+                        <label for="tenure">Semestres Cursados:</label>
+                        <input type="number" id="tenure" name="tenure" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="university">Universidade:</label>
+                        <input type="text" id="university" name="university">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="essay">Onde você se vê profissionalmente em 5 anos e como a D'Avila Reis pode fazer parte dessa jornada? (Resposta obrigatória)</label>
+                        <textarea id="essay" name="essay" rows="8" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="resume">Anexar Currículo (PDF, Imagem, DOC - Opcional, máx. 5MB):</label>
+                        <input type="file" id="resume" name="resume" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx">
+                    </div>
+
+                    <button type="submit" id="submitButton">Enviar Candidatura</button>
+                    
+                    <div id="loadingMessage" class="message loading-message" style="display: none;">Enviando candidatura...</div>
+                    <div id="responseMessage" class="message response-message" style="display: none;"></div>
+                </form>
+            </div>
+
+            <div class="section-box">
+                <h3>Possibilidades de Crescimento</h3>
+                <ul class="duties-list" style="color: #333; text-align: left; max-width: none;">
+                    <li>Assistente Administrativo → Analista Administrativo → Coordenador(a) → Gestor(a)</li>
+                    <li>Nosso plano de carreira é transparente e baseado em meritocracia.</li>
+                    <li>Profissionais ambiciosos e dedicados têm crescimento acelerado!</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="company-stats">
+                <div class="stat">
+                    <div class="stat-number">18</div>
+                    <div class="stat-label">Anos de Mercado</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">2.500+</div>
+                    <div class="stat-label">Casos de Sucesso</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Áreas de Expertise</div>
+                </div>
+            </div>
+            
+            <div class="footer-quote">
+                <p>"Para quem tem ambição de voar alto, oferecemos as asas. Venha decolar sua carreira conosco!"</p>
+                <a href="http://www.davilareisadvogados.com.br" class="website">www.davilareisadvogados.com.br</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('applicationForm');
+            const submitButton = document.getElementById('submitButton');
+            const loadingMessage = document.getElementById('loadingMessage');
+            const responseMessage = document.getElementById('responseMessage');
+
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault(); // Prevent default form submission
+
+                responseMessage.style.display = 'none'; // Hide previous messages
+                loadingMessage.style.display = 'block'; // Show loading message
+                submitButton.disabled = true; // Disable button during submission
+
+                const formData = new FormData(form);
+                const data = {};
+                for (let [key, value] of formData.entries()) {
+                    data[key] = value;
+                }
+
+                const resumeFile = document.getElementById('resume').files[0];
+                let resumeBase64 = null;
+                let fileName = null;
+                let fileType = null;
+
+                // Handle file upload
+                if (resumeFile) {
+                    const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+                    const ALLOWED_FILE_TYPES = [
+                        'application/pdf',
+                        'image/jpeg',
+                        'image/png',
+                        'application/msword', // .doc
+                        'application/vnd.openxmlformats-officedocument.wordprocessingml.document' // .docx
+                    ];
+
+                    if (resumeFile.size > MAX_FILE_SIZE) {
+                        displayMessage('O arquivo é muito grande. O tamanho máximo permitido é 5MB.', 'error');
+                        resetFormState();
+                        return;
+                    }
+
+                    if (!ALLOWED_FILE_TYPES.includes(resumeFile.type)) {
+                        displayMessage('Formato de arquivo não suportado. Por favor, envie PDF, JPG, PNG ou DOC.', 'error');
+                        resetFormState();
+                        return;
+                    }
+
+                    try {
+                        resumeBase64 = await readFileAsBase64(resumeFile);
+                        fileName = resumeFile.name;
+                        fileType = resumeFile.type;
+                    } catch (error) {
+                        console.error('Error reading file:', error);
+                        displayMessage('Erro ao ler o arquivo. Por favor, tente novamente.', 'error');
+                        resetFormState();
+                        return;
+                    }
+                }
+
+                const payload = {
+                    jobTitle: data.jobTitle, // Capture the job title from the hidden input
+                    fullName: data.fullName,
+                    email: data.email,
+                    major: data.major,
+                    tenure: data.tenure,
+                    university: data.university,
+                    essay: data.essay,
+                    resume: resumeBase64,
+                    fileName: fileName,
+                    fileType: fileType
+                };
+
+                try {
+                    const response = await fetch('/api/submit', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (response.ok) {
+                        displayMessage('Sua candidatura foi enviada com sucesso! Agradecemos o seu interesse e entraremos em contato em breve.<br><br>Enquanto isso, conheça mais sobre o D\'Avila Reis Advogados: <a href="http://www.davilareisadvogados.com.br" class="website" style="color: inherit; text-decoration: underline;">www.davilareisadvogados.com.br</a>', 'success');
+                        form.reset(); // Clear the form
+                    } else {
+                        const errorData = await response.json();
+                        displayMessage(`Ocorreu um erro ao enviar sua candidatura: ${errorData.message || 'Erro desconhecido'}`, 'error');
+                    }
+                } catch (error) {
+                    console.error('Fetch error:', error);
+                    displayMessage('Ocorreu um erro de rede. Por favor, verifique sua conexão e tente novamente.', 'error');
+                } finally {
+                    resetFormState();
+                }
+            });
+
+            function readFileAsBase64(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = () => resolve(reader.result.split(',')[1]); // Get only the base64 part
+                    reader.onerror = error => reject(error);
+                    reader.readAsDataURL(file);
+                });
+            }
+
+            function displayMessage(message, type) {
+                responseMessage.innerHTML = message;
+                responseMessage.className = `message ${type}-message`; // Set class for styling
+                responseMessage.style.display = 'block';
+            }
+
+            function resetFormState() {
+                loadingMessage.style.display = 'none';
+                submitButton.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
